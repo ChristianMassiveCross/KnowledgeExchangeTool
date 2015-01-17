@@ -1,0 +1,19 @@
+extends layout
+block title
+    title Article Title
+block content
+    form#formDelUser(name="deluser",method="post",action="/deluser")
+    table(border='1')
+        thead
+            tr
+                th mail
+                th name
+                th action
+        tbody
+            each user, index in userlist
+                tr
+                    input#inputUserName(type="hidden", value="#{user._id}", name="ident")
+                    td email:#{user.email}
+                    td username:#{user.username}
+                    td: a(class='button', href='newuser') delete
+    a(class='button', href='newuser') add new user 
