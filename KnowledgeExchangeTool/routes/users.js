@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.send('respond with a resource jaja');
 });
 /* GET Userlist page. */
 router.get('/list', function(req, res) {
@@ -45,4 +45,22 @@ router.post('/add', function(req, res) {
         }
     });
 });
+
+router.get('/del',function(request, response){
+    var dbHandle = request.db;
+    console.log('parameter'+request.a);
+    var deleteIdentifyer = request.body.ident;
+    console.log('delete User by id:'+deleteIdentifyer);
+    var collection = dbHandle.get('userCollection');
+    collection.remove({"_id" : deleteIdentifyer },function (err, doc) {
+        if (err) {
+            response.send("There was a problem with delete.");
+        }
+        else {
+            response.location("list");
+            response.redirect("list");
+        }
+    });
+});
+
 module.exports = router;
