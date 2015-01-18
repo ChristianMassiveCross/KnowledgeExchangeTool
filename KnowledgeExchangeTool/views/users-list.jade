@@ -14,4 +14,8 @@ block content
                     td email:#{user.email}
                     td username:#{user.username}
                     td: a(class='button', href='newuser') delete
-    a(class='button', href='users/new') add new user 
+        tbody
+            tr: form#formAddUser(name="adduser",method="post",action="users/add")
+                td: input#inputUserName(type="text", placeholder="username", name="username")
+                td: input#inputUserEmail(type="text", placeholder="useremail", name="useremail")
+                td: button#btnSubmit(type="submit") submit

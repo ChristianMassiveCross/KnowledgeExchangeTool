@@ -41,7 +41,7 @@ router.post('/add', function(req, res) {
 
 router.get('/del',function(request, response){
     var dbHandle = request.db;
-    console.log('parameter'+request.a);
+    console.log('parameter'+request.parameter.a);
     var deleteIdentifyer = request.body.ident;
     console.log('delete User by id:'+deleteIdentifyer);
     var collection = dbHandle.get('userCollection');
