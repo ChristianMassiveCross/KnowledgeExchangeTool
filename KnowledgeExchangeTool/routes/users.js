@@ -22,7 +22,6 @@ router.post('/add', function(req, res) {
     var db = req.db;
     var userName = req.body.username;
     var userEmail = req.body.useremail;
-    userName = 'test';
     var collection = db.get('userCollection');
 
     console.log('add user:'+userName);
@@ -34,10 +33,8 @@ router.post('/add', function(req, res) {
             res.send("There was a problem adding the information to the database.");
         }
         else {
-            // If it worked, set the header so the address bar doesn't still say adduser
-            res.location("list");
-            // And forward to success page
-            res.redirect("list");
+            res.location("/users");
+            res.redirect("/users");
         }
     });
 });
@@ -53,8 +50,8 @@ router.get('/del',function(request, response){
             response.send("There was a problem with delete.");
         }
         else {
-            response.location("list");
-            response.redirect("list");
+            response.location("/users");
+            response.redirect("/users");
         }
     });
 });
